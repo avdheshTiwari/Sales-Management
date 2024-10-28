@@ -1,0 +1,46 @@
+-- Create database
+CREATE DATABASE IF NOT EXISTS company;
+USE company;
+
+-- Create users table
+CREATE TABLE IF NOT EXISTS users (
+    userid INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL
+);
+
+-- Create sales table
+CREATE TABLE IF NOT EXISTS sales (
+    salesID INT AUTO_INCREMENT PRIMARY KEY,
+    salespersonName VARCHAR(100) NOT NULL,
+    target INT NOT NULL,
+    numberOfUnits INT NOT NULL,
+    numberOfUnitsSold INT NOT NULL,
+    completionStatus VARCHAR(50) NOT NULL
+);
+
+-- Create products table
+CREATE TABLE IF NOT EXISTS products (
+    productID INT AUTO_INCREMENT PRIMARY KEY,
+    productName VARCHAR(100) NOT NULL,
+    description TEXT,
+    price DECIMAL(10, 2) NOT NULL,
+    stock INT NOT NULL
+);
+
+-- Sample data for users table
+INSERT INTO users (name, email, username, password) VALUES 
+('John Doe', 'john@example.com', 'john_doe', 'password123'),
+('Jane Smith', 'jane@example.com', 'jane_smith', 'password456');
+
+-- Sample data for sales table
+INSERT INTO sales (salespersonName, target, numberOfUnits, numberOfUnitsSold, completionStatus) VALUES 
+('John Doe', 100, 200, 150, 'Completed'),
+('Jane Smith', 150, 300, 200, 'In Progress');
+
+-- Sample data for products table
+INSERT INTO products (productName, description, price, stock) VALUES 
+('Product A', 'Description for Product A', 29.99, 100),
+('Product B', 'Description for Product B', 49.99, 50);
